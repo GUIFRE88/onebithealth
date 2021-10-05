@@ -1,6 +1,7 @@
 import React, {useState} from "react"
-import { View, TextInput, Text, Button } from "react-native"
+import { View, TextInput, Text, TouchableOpacity } from "react-native"
 import ResultImc from "./ResultImc/"
+import style from "./style"
 
 export default function Form(){
 
@@ -30,7 +31,7 @@ export default function Form(){
         setImc(null)
         setMessageThinOrFat(null)
         setThinOrFat(null)
-        setTextButton("Calcular")
+        setTextButton("CALCULAR IMC")
         setMessageImc("Preencha o peso e a altura")
     }
 
@@ -52,30 +53,35 @@ export default function Form(){
     }
 
     return (
-        <View>
-            <View>
+        <View style ={style.formContext}>
+            <View style ={style.form}>
 
-                <Text>Altura</Text>
+                <Text style = {style.formLabel}>Altura</Text>
                 <TextInput
                     onChangeText={setHeigth} // Ao digitar o valor já joga para o state
                     value={height}
                     placeholder="Ex. 1.75"
-                    keyboardType="numeric"    
+                    keyboardType="numeric"
+                    style ={style.input}    
                 />
 
-                <Text>Peso</Text>
+                <Text style = {style.formLabel}>Peso</Text>
                 <TextInput
                     onChangeText={setWeight} // Ao digitar o valor ja joga para o state
                     value={weight}
                     placeholder="Ex. 75"
-                    keyboardType="numeric"   
+                    keyboardType="numeric"
+                    style ={style.input}     
                 />
 
-            <Button
+            <TouchableOpacity
                 onPress={() => validationImc()}
-                title={textButton}
-
-            />
+                style = {style.buttonCalculator}
+            >
+                <Text style = {style.textButtonCalculator}>
+                    {textButton}
+                </Text>
+            </TouchableOpacity>
 
             </View>
 
