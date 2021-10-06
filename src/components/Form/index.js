@@ -15,7 +15,10 @@ export default function Form(){
 
     function imcCalculator(){
         //Calcula o IMC e seta 2 casas decimais
-        return setImc((weight/(height*height)).toFixed(2))
+        var calc = (weight/(height*height)).toFixed(2)
+        setImc(calc)
+        showThinOrFat(calc)
+
     }
 
     function validationImc(){
@@ -37,19 +40,20 @@ export default function Form(){
 
     function showThinOrFat(imc){
         if(imc > 0 && imc < 18.5){
-            setThinOrFat("Baixo peso")
+            setThinOrFat("Baixo Peso !")
         }else if(imc > 18.5 && imc < 24.9){
-            setThinOrFat("Intervalo Normal")
+            setThinOrFat("Intervalo Normal!")
         }else if(imc > 25 && imc < 29.9){
-            setThinOrFat("Sobrepeso")
+            setThinOrFat("Sobrepeso!")
         }else if(imc > 30 && imc < 34.9){
-            setThinOrFat("Obesidade Classe 1")
+            setThinOrFat("Obesidade Classe 1!")
         }else if(imc > 35 && imc < 39.9){
-            setThinOrFat("Obesidade Classe 2")
+            setThinOrFat("Obesidade Classe 2!")
         }else if(imc > 40){
-            setThinOrFat("Obesidade Classe 3")
+            setThinOrFat("Obesidade Classe 3!")
+        }else {
+            setThinOrFat("Impreciso!")
         }
-        return
     }
 
     return (
